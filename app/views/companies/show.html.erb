@@ -1,0 +1,5 @@
+<h1><%= @company.title %></h1>
+
+<% if @company.admin? %>
+  <%= button_to "Delete Company", admin_company_path(@company), :method => :delete %> %>
+<% end %>
