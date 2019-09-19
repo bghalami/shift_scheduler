@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   namespace :admin do
-    resources :companies, only: [:delete, :index, :new, :create]
+    resources :companies, only: [:destroy, :index, :new, :create, :show]
   end
 
   resources :companies, only: [:show]
