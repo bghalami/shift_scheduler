@@ -1,6 +1,12 @@
 class Admin::CompaniesController < ApplicationController
+
   def index
     @companies = Company.all
+  end
+
+  def show
+    @company = Company.find(params[:id])
+    render :template => 'companies/show'
   end
 
   def new
@@ -20,6 +26,10 @@ class Admin::CompaniesController < ApplicationController
   end
 
   def destroy
+    company = Company.find(params[:id])
+    company.delete
+    flash[:notice] = "Successfully deleted '#{company.title}'"
+    redirect_to admin_companies_path
   end
 
   private
