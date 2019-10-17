@@ -4,6 +4,13 @@ describe User, type: :model do
     expect(User).to be
   end
   describe 'validations' do
+    company = Company.create(title: "A Store")
+    user = company.users.create(name: 'james boblames',
+                                username: 'philbo',
+                                password: 'oh_hello',
+                                pay_rate: 22.22,
+                                hours_requested: 22
+                               )
     it {should validate_presence_of(:name)}
     it {should validate_presence_of(:username)}
     it {should validate_uniqueness_of(:username)}
