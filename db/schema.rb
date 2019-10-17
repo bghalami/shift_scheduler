@@ -16,19 +16,21 @@ ActiveRecord::Schema.define(version: 2019_10_09_233656) do
   enable_extension "plpgsql"
 
   create_table "companies", force: :cascade do |t|
-    t.string "title"
+    t.string "title", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "user_tables", force: :cascade do |t|
-    t.string "name"
-    t.string "username"
-    t.string "password_digest"
-    t.float "pay_rate"
-    t.integer "hours_requested"
-    t.integer "role"
-    t.bigint "company_id"
-    t.index ["company_id"], name: "index_user_tables_on_company_id"
+  create_table "users", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "username", null: false
+    t.string "password_digest", null: false
+    t.float "pay_rate", null: false
+    t.integer "hours_requested", null: false
+    t.integer "role", default: 0, null: false
+    t.bigint "company_id", null: false
+    t.index ["company_id"], name: "index_users_on_company_id"
   end
 
-  add_foreign_key "user_tables", "companies"
+  add_foreign_key "users", "companies"
 end
