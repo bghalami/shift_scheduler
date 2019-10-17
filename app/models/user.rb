@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   validates_presence_of :name, :pay_rate, :hours_requested, :role, :company_id, :password_digest
-  validates_presence_of :username, uniqueness: true
+  validates_presence_of :username, uniqueness: { scope: :company }
 
   has_secure_password
 
