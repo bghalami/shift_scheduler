@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  validates_presence_of :name, :pay_rate, :hours, :role
+  validates_presence_of :name, :pay_rate, :hours_requested, :role, :company_id, :password_digest
   validates_presence_of :username, uniqueness: true
 
   has_secure_password
